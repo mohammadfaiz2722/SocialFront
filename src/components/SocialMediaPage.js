@@ -316,7 +316,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://backend-8-p7kz.onrender.com');
 
 const SocialMediaPage = () => {
   const [posts, setPosts] = useState([]);
@@ -346,7 +346,7 @@ const SocialMediaPage = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts', {
+      const response = await fetch('https://backend-8-p7kz.onrender.com/api/posts', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -368,7 +368,7 @@ const SocialMediaPage = () => {
     if (!newPost.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/posts', {
+      const response = await fetch('https://backend-8-p7kz.onrender.com/api/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -392,7 +392,7 @@ const SocialMediaPage = () => {
 
   const handleToggleLike = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/togglelike/${id}`, {
+      const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts/togglelike/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -421,7 +421,7 @@ const SocialMediaPage = () => {
 
   const handleUpdatePost = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
+      const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -448,7 +448,7 @@ const SocialMediaPage = () => {
 
   const handleDeletePost = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
+      const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -472,7 +472,7 @@ const SocialMediaPage = () => {
     if (!comments[postId]?.trim()) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/comment/${postId}`, {
+      const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts/comment/${postId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -501,7 +501,7 @@ const SocialMediaPage = () => {
 
   const handleDeleteComment = async (postId, commentId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/comment/${postId}/${commentId}`, {
+      const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts/comment/${postId}/${commentId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
