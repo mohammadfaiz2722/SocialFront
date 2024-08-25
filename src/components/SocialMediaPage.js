@@ -39,32 +39,32 @@ const SocialMediaPage = () => {
     }
   };
 
-  const handleCreatePost = async () => {
+const handleCreatePost = async () => {
     if (!newPost.trim()) return;
 
     try {
-      const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-         'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify({ content: newPost })
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setPosts([data, ...posts]);
-        setNewPost('');
-        toast.success('Post created successfully');
-        fetchPosts();
-      } else {
-        toast.error('Failed to create post');
-      }
+        const response = await fetch(`http://localhost:5000/api/posts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ content: newPost })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            setNewPost('');  // Clear the new post input field
+            toast.success('Post created successfully');
+            fetchPosts();  // Fetch the posts again
+        } else {
+            toast.error('Failed to create post');
+        }
     } catch (error) {
-      console.error('Error creating post:', error);
-      toast.error('Failed to create post');
+        console.error('Error creating post:', error);
+        toast.error('Failed to create post');
     }
-  };
+};
+
 
  
 
