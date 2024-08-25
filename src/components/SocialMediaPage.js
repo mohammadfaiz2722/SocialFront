@@ -56,6 +56,7 @@ const SocialMediaPage = () => {
         setPosts([data, ...posts]);
         setNewPost('');
         toast.success('Post created successfully');
+        fetchPosts();
       } else {
         toast.error('Failed to create post');
       }
