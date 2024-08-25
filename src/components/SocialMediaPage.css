@@ -1,0 +1,60 @@
+.social-media-page {
+  margin-top: 20px;
+}
+
+.create-post textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.create-post button {
+  display: block;
+  margin-top: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.posts .card {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn-light, .btn-danger {
+  border-radius: 5px;
+}
+
+.comments {
+  margin-top: 10px;
+}
+
+.comment {
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.comments input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

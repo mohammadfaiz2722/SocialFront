@@ -1,0 +1,13 @@
+/* src/components/Navbar.css */
+.custom-navbar {
+    background-color: #007bff; /* Custom background color (e.g., Bootstrap's primary color) */
+  }
+  
+  .navbar-brand, .nav-link {
+    color: white !important; /* Ensure text is white */
+  }
+  
+  .nav-link:hover {
+    color: #ddd !important; /* Slightly lighter color on hover */
+  }
+  
