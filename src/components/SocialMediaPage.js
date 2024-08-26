@@ -336,9 +336,10 @@ const SocialMediaPage = () => {
 
     // Listen for new posts
     socket.on('new-post', (post) => {
+      console.log(posts)
       setPosts((prevPosts) => [post, ...prevPosts]);
     });
-
+console.log(posts)
     return () => {
       socket.off('new-post');
     };
@@ -355,6 +356,7 @@ const SocialMediaPage = () => {
       const data = await response.json();
       if (response.ok) {
         setPosts(data);
+        
       } else {
         toast.error('Failed to fetch posts');
       }
@@ -391,29 +393,29 @@ const SocialMediaPage = () => {
   };
 
   const handleToggleLike = async (id) => {
-    try {
-      const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts/togglelike/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-      });
-
-      if (response.ok) {
-        const updatedPost = await response.json();
-        setPosts((prevPosts) =>
-          prevPosts.map((post) => (post._id === id ? updatedPost : post))
-        );
-      } else {
-        toast.error('Failed to update like');
-      }
-    } catch (error) {
-      console.error('Error updating like:', error);
-      toast.error('Failed to update like');
-    }
-  };
-
+        try {
+          const response = await fetch(`https://backend-8-p7kz.onrender.com/api/posts/togglelike/${id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          });
+    
+          if (response.ok) {
+            const { likes, likeCount } = await response.json();
+            setPosts(posts.map(post => 
+              post._id === id ? { ...post, likes, likeCount } : post
+            ));
+          } else {
+            const errorData = await response.json();
+            toast.error(errorData.msg || 'Failed to update like');
+          }
+        } catch (error) {
+          console.error('Error updating like:', error);
+          toast.error('Failed to update like');
+        }
+      };
   const handleEditClick = (post) => {
     setEditingPost(post._id);
     setEditContent(post.content);
